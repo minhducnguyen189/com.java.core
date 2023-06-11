@@ -8,5 +8,6 @@ public class JavaStaticMain {
         System.out.println("countValue is " + StaticVariableClassExample.count);
 
         System.out.println("Sum of a and b: " + StaticMethodClassExample.add(5,5));
+        System.out.println("StaticBlockClassExample count Value is: " + StaticBlockClassExample.count);
     }
 }
