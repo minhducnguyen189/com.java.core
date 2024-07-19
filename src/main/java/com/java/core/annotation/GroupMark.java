@@ -7,8 +7,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.TYPE})
-public @interface JsonSerializer {
+public @interface GroupMark {
 
+    GroupNameEnum groupName();
 
+    boolean usedInAnotherGroup() default false;
 
 }

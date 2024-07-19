@@ -1,6 +1,6 @@
 package com.java.core.annotation;
 
-@JsonSerializer
+@GroupMark(groupName = GroupNameEnum.HUMAN)
 public class PersonDto {
 
     private String firstName;
@@ -8,14 +8,10 @@ public class PersonDto {
     private String age;
     private String address;
 
-    public PersonDto() {
-    }
+    @GroupMark(groupName = GroupNameEnum.ANIMAL, usedInAnotherGroup = true)
+    private DogDto pet;
 
-    public PersonDto(String firstName, String lastName, String age, String address) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.age = age;
-        this.address = address;
+    public PersonDto() {
     }
 
     public String getFirstName() {
@@ -48,5 +44,13 @@ public class PersonDto {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public DogDto getPet() {
+        return pet;
+    }
+
+    public void setPet(DogDto pet) {
+        this.pet = pet;
     }
 }
