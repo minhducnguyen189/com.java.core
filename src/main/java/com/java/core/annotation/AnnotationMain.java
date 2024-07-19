@@ -27,6 +27,9 @@ public class AnnotationMain {
     }
 
     private static void printGroupInformation(Object object) {
+        if (Objects.isNull(object) || !object.getClass().isAnnotationPresent(GroupMark.class)) {
+            return;
+        }
         GroupMark groupMark = object.getClass().getAnnotation(GroupMark.class);
         System.out.println(MessageFormat.format(PARENT_GROUP_MESSAGE,
                 object.getClass().getSimpleName(),
