@@ -1,5 +1,9 @@
 package com.java.core.functionalprogramming;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldNameConstants;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,14 +20,14 @@ public class ValidatorFunctionsMain {
         List<String> errors = new ArrayList<>();
 
         ValidatorFuntions
-                .validateNotEmpty("name", product.name)
-                .andThen(ValidatorFuntions.validateCleanString("name", product.name))
-                .andThen(ValidatorFuntions.validateStringMinLength("name", product.name, 3))
-                .andThen(ValidatorFuntions.validateStringMaxLength("name", product.name, 100))
-                .andThen(ValidatorFuntions.validateNotEmpty("description", product.description))
-                .andThen(ValidatorFuntions.validateCleanString("description", product.description))
-                .andThen(ValidatorFuntions.validateStringMinLength("description", product.description, 3))
-                .andThen(ValidatorFuntions.validateStringMaxLength("description", product.description, 500))
+                .validateNotEmpty(Product.Fields.name, product.name)
+                .andThen(ValidatorFuntions.validateCleanString(Product.Fields.name, product.name))
+                .andThen(ValidatorFuntions.validateStringMinLength(Product.Fields.name, product.name, 3))
+                .andThen(ValidatorFuntions.validateStringMaxLength(Product.Fields.name, product.name, 100))
+                .andThen(ValidatorFuntions.validateNotEmpty(Product.Fields.description, product.description))
+                .andThen(ValidatorFuntions.validateCleanString(Product.Fields.description, product.description))
+                .andThen(ValidatorFuntions.validateStringMinLength(Product.Fields.description, product.description, 3))
+                .andThen(ValidatorFuntions.validateStringMaxLength(Product.Fields.description, product.description, 500))
                 .accept(errors);
 
         if (!errors.isEmpty()) {
@@ -32,35 +36,14 @@ public class ValidatorFunctionsMain {
     }
 
 
+    @Getter
+    @Setter
+    @FieldNameConstants
     public static class Product {
 
         private String name;
         private String description;
         private BigDecimal price;
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
-        }
-
-        public BigDecimal getPrice() {
-            return price;
-        }
-
-        public void setPrice(BigDecimal price) {
-            this.price = price;
-        }
     }
 
 }
